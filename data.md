@@ -1,7 +1,6 @@
 |Lights-Balls
 |Lights Balls
-|Dodge the balls by destroying them with the mouse cursor
-|But not everything is so simple, when you destroy the ball, it breaks up into several smaller ones
+|Dodge the balls by destroying them with the mouse cursor \n But not everything is so simple, when you destroy the ball, it breaks up into several smaller ones
 |AiOk8Q7qqiY
 
 |The-Light-2-Plus-Plus
