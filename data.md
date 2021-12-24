@@ -13,10 +13,10 @@
 @-
 
 @Dungeon (Underground-traps)
-@Dungeon-Underground-traps
-@https://github.com/Agzam4/Dungeon-Underground-traps/releases/download/v2.4.0/Dungeon-Underground-traps.zip
-@Platformer with generated levels and lots of traps
+@Dungeon-Underground-traps-
 @https://repository-images.githubusercontent.com/374747355/f95abde4-505a-4a2f-be1f-e23e130a9fac
+@Platformer with generated levels and lots of traps
+@https://github.com/Agzam4/Dungeon-Underground-traps/releases/download/v2.4.0/Dungeon-Underground-traps.zip
 @X_qAUPZXDU4
 
 @Tetris
