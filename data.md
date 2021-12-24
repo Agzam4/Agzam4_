@@ -12,8 +12,8 @@
 @https://github.com/Agzam4/The-Light-2-Plus-Plus/releases/download/v1.2.1/TheLight2++_v1.2.1.jar 
 @-
 
+@Dungeon-Underground-traps
 @Dungeon (Underground-traps)
-@Dungeon-Underground-traps-
 @https://repository-images.githubusercontent.com/374747355/f95abde4-505a-4a2f-be1f-e23e130a9fac
 @Platformer with generated levels and lots of traps
 @https://github.com/Agzam4/Dungeon-Underground-traps/releases/download/v2.4.0/Dungeon-Underground-traps.zip
@@ -26,8 +26,8 @@
 @https://github.com/Agzam4/Tetris/archive/refs/heads/main.zip
 @1lVPgbEYQMo
 
-@Dark Cave
 @Dark-Cave-Game-
+@Dark Cave
 @https://repository-images.githubusercontent.com/317181322/8ba3e700-33af-11eb-9d9a-6c6406456207
 @Explore dungeons full of darkness and charming light of gems, in search of treasures
 @https://github.com/Agzam4/Dark-Cave-Game-/archive/refs/heads/main.zip
