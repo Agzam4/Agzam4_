@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+
+		html {
+			--gradient-color-1: #C700FF;
+			--gradient-color-2: #0090FF;
+			--gradient: linear-gradient(70deg, gradient-color-1, gradient-color-2);
+		}
+
+		body {
+			font-family: sans-serif;
+			background: #111;
+			color: #EEE;
+		}
+
+
+		* {
+			user-select: none !important;
+		}
+
+		::-webkit-scrollbar {
+			width: 7px;
+			background-color: #111;
+    	box-shadow: inset 6px 0px 6px 0px #000000a1;
+		}
+
+		::-webkit-scrollbar-thumb {
+  		background: #555;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+  		background: #777;
+		}
+
+
+		header {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 10;
+   			/*height: 80px;*/
+		}
+
+		inheader {
+			position: absolute;
+			display: inline-block;
+			top: 0;
+    		background-attachment: fixed;
+    		background: #151515;
+		}
+
+		inheader {
+			user-select: none !important;
+		}
+
+		inheader.p1 {
+			left: 0px;
+			width: 80px;
+			height: 80px;
+			border-bottom-right-radius: 50%;
+		}
+
+		.body {
+			position: absolute;
+			top: 80px;
+			width: calc(90% - 80px);
+			left: 80px;
+			padding: 10px 30px;
+		}
+
+		inheader.p2 {
+			left: 80px;
+			width: calc(100% - 80px);
+    		box-shadow: 9px 0px 5px 0px #000000;
+		}
+
+		li {
+    		display: inline-block;      
+    		list-style: none;
+			text-decoration: none;
+		}
+
+		li:hover {
+			background: #F00;
+		}
+
+		.gradient {
+  			border: none;
+  			color: white;
+		}
+
+		.gradient.roundbr:before {
+			border-bottom-right-radius: 50%;
+		}
+
+		.gradient:before {
+			position: absolute;
+			content: '';
+			top: -2px;
+			left: -2px;
+			height: calc(100% + 4px);
+			width: calc(100% + 4px);
+			z-index: -1;
+			opacity: 0.5;
+			filter: blur(3px);
+  			/*background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);*/
+
+  			background: linear-gradient(90deg, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #48ff00);
+  			background-size: 400%;
+  			transition: opacity .3s ease-in-out;
+  			animation: animate 20s linear infinite;
+		}
+
+		.gradient:hover:before {
+  			opacity: 1;
+		}
+
+		/*.gradient:hover:active:before {
+  			filter: blur(2px);
+		}*/
+
+		@keyframes animate {
+  			0% {
+    			background-position: 0 0;
+  			}
+  			50% {
+  			  	background-position: 400% 0;
+  			}
+  			100% {
+  			  	background-position: 0 0;
+  			}
+  		}
+
+  		mainimage > img {
+			user-select: none !important;
+  			display: block;
+  			border-radius: 50%;
+    		width: 100% !important;
+  			height: auto;
+    		box-shadow: 0px 0px 0px 1px #888;
+  		}
+
+  		mainimage {
+			user-select: none !important;
+  			display: inline-block;
+  			width: 50px;
+  			max-width: 50px;
+  			padding: 10px;
+  		}
+
+  		.navel {
+    		z-index: 3;
+  			transition: .2s ease-in-out;
+    		display: inline-block;   
+  			/*width: auto;*/
+			/*height: calc(100%);*/
+			position: relative;
+    		box-shadow: inset 0 -2px 0px 0px #AAA;
+  		}
+
+  		.navbutton {
+			user-select: none !important;
+    		z-index: 4;
+  			padding: 10px 20px;
+  			position: sticky;
+  			left: 0;
+
+  			color: #EEE;
+    		text-decoration: none;
+    		box-shadow: inset 0 -2px 0px 0px #AAA;
+  		}
+
+  		.navel:hover {
+  			background: #444;
+  		}
+
+  		.headerBox {
+  			margin: 3px 10px 2px 10px;
+  		}
+
+  		.navcontent {
+    		/*display: none;*/
+   	 		position: absolute;
+   	 		color: #EEE;
+    		background: #151515;
+    		min-width: 160px;
+    		box-shadow: 0px 1px 10px 0px #00000080;
+    		z-index: 1;
+			transform: scaleY(0);
+			transform-origin: top;
+  			transition: .2s ease-in-out;
+  		}
+
+  		.navcontent a {
+			user-select: none !important;
+   	 		color: #EEE;
+    		background: #151515;
+    		padding: 12px 16px;
+    		text-decoration: none;
+    		display: block;
+  			transition: height .2s ease-in-out;
+    		z-index: 2;
+  		}
+
+  		.navcontent a img {
+  			height: 16px;
+    		filter: brightness(1.1) grayscale(1) invert(1) brightness(5);
+    		padding: 0 10px 0 0;
+    		transform: translateY(2px);
+  		}
+
+  		.ia {
+    		background: #151515;
+    		padding: 2px 16px;
+  		}
+
+  		.ia:hover {
+  			filter: brightness(1.5);
+  		}
+
+  		.headerBox {
+			user-select: none !important;
+  		}
+
+  		.navcontent a:hover {
+    		background: #333;
+  		}
+
+		.navel:hover .navcontent {
+    		display: block;
+			transform: scaleY(1.0);
+		}
+
+		.dis {
+			user-select: none !important;
+			cursor: not-allowed;
+			color: #888;
+		}
+
+		line {
+			display: block;
+			background: #EEE;
+			width: 100%;
+			height: 2px;
+		}
+
+		.badge {
+			user-select: none !important;
+  			transition: .1s ease-in-out;
+		}
+
+		.badge:hover {
+			filter: brightness(0.7);
+		}
+
+		img.project {
+			width: 50%;
+			border-radius: 5px;
+		}
+
+		div.project {
+			display: inline-flex;
+			background: #151515;
+			padding: 10px;
+    		box-shadow: 0px 0px 3px 0px #00000080;
+  			border-radius: 5px;
+  			border: 2px #333 solid;
+  			transition: .2s ease-in-out;
+		}
+
+		div.project:hover {
+    		box-shadow: 0px 0px 0px 5px #555;
+		}
+
+		info {
+			display: block;
+    		padding: 0px 20px;
+		}
+
+		info > h1 {
+    		padding: 0px 0px;
+    		margin: 10px 0px 0px 0px;
+    		color: #EEE;
+		}
+
+		info {
+			user-select: none !important;
+			color: #CCC;
+		}
+
+		info > .badge {
+    		width: auto;
+    		height: 20px;
+		}
+
+		.download {
+			font-family: monospace;
+			display: inline-block;
+			width: fit-content;
+			padding: 5px 20px;
+			color: #EEE;
+			background: #333;
+  			transition: .2s ease-in-out;
+			text-decoration: none;
+		}
+
+		.gotocode {
+			font-family: monospace;
+			display: inline-block;
+			width: fit-content;
+			padding: 5px 20px;
+			color: #EEE;
+			background: #333;
+  			transition: .2s ease-in-out;
+			text-decoration: none;
+		}
+
+		.download:hover {
+			color: #FFF;
+			box-shadow: 0 0 0 3px #555;
+		}
+
+		.gotocode:hover {
+			color: #FFF;
+			box-shadow: 0 0 0 3px #555;
+		}
+
+		videoplayer {
+			position: fixed;
+			display: block;
+			width: calc(100% - 105px);
+			height: calc(100% - 30px);
+			z-index: 1000;
+			background: #222;
+			top: 15px;
+			left: 15px;
+			border-radius: 7px;
+			box-shadow: 0 0 0 90px #000000AA;
+			transform: scale(0.0);
+    		transition: .5s cubic-bezier(0.2, 0, 0.13, 1.5);
+		}
+
+		videoplayer > iframe {
+			border-radius: 7px;
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			width: calc(100% - 10px);
+			height: calc(100% - 10px);
+		}
+
+		.closebtn {
+			user-select: none !important;
+			font-size: 30px;
+			position: fixed;
+			display: block;
+			background: #515151;
+			width: 60px;
+			right: -75px;
+			top: 0px;
+    		border-radius: 7px;
+    		/*border-top-right-radius: 10px;*/
+    		text-align: center;
+    		padding: 0px 0px;
+  			transition: .2s ease-in-out;
+		}
+
+		.closebtn:hover {
+			background: #e9431e;
+			box-shadow: 0 0 5px 0px #e9431e;
+		}
+
+		.watch {
+			display: inline-block;
+			border-radius: 5px;
+			transform: translateY(2px);
+  			transition: .2s ease-in-out;
+		}
+
+		.watch:hover {
+			filter: brightness(0.7);
+		}
+
+		msglist {
+			z-index: 9999999;
+			position: fixed;
+			width: fit-content;
+			height: fit-content;
+			top: 0;
+			right: 0;
+		}
+
+		msg {
+			display: inline-block;
+			padding: 10px 30px;
+			color: #EEE;
+			margin: 10px 20px;
+			border-radius: 7px;
+			background: linear-gradient(45deg, #0083FF 50%, #EE00FF, #0083FF);
+			background-attachment: fixed;
+  			/*transition: .5s ease-in-out;*/
+  			/*transition: opacity .5s ease-in-out;*/
+		}
+
+
+		.loadingbox {
+ 	 		position: relative;
+ 	 		display: inline-flex;
+    		width: calc(100% - 25px);
+  			height: 50vh;
+    		background: #151515;
+    		padding: 10px;
+    		box-shadow: 0px 0px 3px 0px #00000080;
+    		border-radius: 5px;
+    		border: 2px #333 solid;
+		}
+	
+		loading {
+    		position: absolute;
+    		height: 60px;
+    		width: 60px;
+    		border: 3px solid transparent;
+    		border-top-color: #FFF;
+    		top: 50%;
+    		left: 50%;
+    		margin: -30px;
+    		border-radius: 50%;
+    		animation: spin 2s linear infinite;
+		}
+
+     loading:before, loading:after{
+      content:'';
+      position: absolute;
+      border: 3px solid transparent;
+      border-radius: 50%;
+    }
+    
+    loading:before{
+      border-top-color: #0090FF;
+      top: -12px;
+      left: -12px;
+      right: -12px;
+      bottom: -12px;
+      animation: spin 3s linear infinite;
+    }
+    
+    loading:after{
+      border-top-color: #9000FF;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      bottom: 6px;  
+      animation: spin 4s linear infinite;
+    }
+
+
+		@keyframes spin{
+  		0% {
+  			transform: rotate(0deg);
+  		}
+  		100% {
+  			transform: rotate(360deg);
+  		}
+		}
+	</style>
+
+	<script type="text/javascript">
+
+		window.onload = function() {
+			let data = "";
+			var request = new XMLHttpRequest();
+    		request.open('GET', 'https://raw.githubusercontent.com/Agzam4/Agzam4_/main/data.md', true);
+    		request.send(null);
+    		request.onreadystatechange = function () {
+        		if (request.status === 200) {
+        			console.log(request.responseText);
+            		data = request.responseText;
+            		loadProjects(data);
+        		}
+        	}
+    	}
+    	let isLoaded = false;
+
+    	function loadProjects(data) {
+    		if(isLoaded) return;
+    		if(data != "") {
+    			isLoaded = true;
+        		let main = document.getElementById('projects');
+        		let projects = data.split("\n\n");
+        		let allHtml = "";
+        		for (var i = 0; i < projects.length; i++) {
+        			let projectData = projects[i].replaceAll("\n", "").split("@");
+        			console.log(projectData);
+
+        			let projectUrl = 			projectData[1];
+        			let projectName = 			projectData[2];
+        			let imageUrl = 				projectData[3];
+        			let projectDescription = 	projectData[4].replaceAll("\\n", "\n");
+        			let projectDownload = 		projectData[5];
+        			let projectYouTube = 		projectData[6];
+
+        			let youTubeClick = "";
+        			if(projectYouTube != "-") {
+        				youTubeClick = `<img class="watch" onclick="showVideo('` + projectYouTube + `')" src="https://img.shields.io/static/v1?label=%20&message=%20watch&color=%23F00&logo=youtube&style=for-the-badge">`;
+        			}
+        			console.log(projectName);
+					let html = `
+					<div class="project" onclick="full(this)">
+					<img class="project " onError="imageErr(this)" src="` + imageUrl + `"/></td>
+					<info>
+					<h1>` + projectName + " " + youTubeClick +
+					`</h1>
+					<br> 
+
+					<img class="badge" alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/agzam4/` + projectUrl +  `?color=9000FF&style=for-the-badge">
+					<img class="badge" alt="GitHub release (GitHub all releases)" src="https://img.shields.io/github/downloads/agzam4/` + projectUrl +  `/total?color=0090FF&style=for-the-badge">
+					<img class="badge" alt="GitHub release (GitHub Repo stars)" src="https://img.shields.io/github/stars/agzam4/` + projectUrl +  `?color=FFE572&style=for-the-badge">
+					<br><br><line></line><br>
+					` + projectDescription + `
+					<br><br><line></line><br>
+					<div class="br">
+					<a class="download" href="` + projectDownload +  `">Download</a>
+					<a class="gotocode" href="https://github.com/Agzam4/` + projectUrl +  `">Go to code</a>
+					</div>
+					</info>
+					</div><br><br>
+					`
+        			allHtml += html;
+        		}
+        		main.innerHTML = allHtml;
+        	}
+
+
+const links = document.querySelectorAll('a[href*="#"]');
+
+for (const link of links) {
+  link.addEventListener("click", clickHandler);
+}
+
+function clickHandler(e) {
+  e.preventDefault();
+  const href = this.getAttribute("href");
+  const offsetTop = document.querySelector(href).offsetTop;
+
+  scroll({
+    top: offsetTop,
+    behavior: "smooth"
+  });
+}
+
+
+
+    	}
+
+
+    	function imageErr(img) {
+    		console.log(img);
+    		img.classList += "loadingimg";
+    	}
+
+		function showVideo(url) {
+			document.body.style.overflowY = "hidden";
+			document.getElementById("video").src = "https://www.youtube.com/embed/" + url;
+			document.getElementById("videoplayer").style.transition = ".3s cubic-bezier(0.2, 0, 0.0, 1.5)";
+			document.getElementById("videoplayer").style.transform = "scale(1.0)";
+			document.getElementById("videoplayer").style.opacity = "1.0";
+		}
+
+		function closeVideo() {
+			document.body.style.overflowY = "visible";
+			document.getElementById("videoplayer").style.transition = ".2s ease-in-out";
+			document.getElementById("videoplayer").style.transform = "scale(0.0)";
+			document.getElementById("videoplayer").style.opacity = "0.0";
+			document.getElementById("video").src = "";
+		}
+
+
+		function closeFull() {
+				return;
+			document.getElementById("projectfull").style.transition = ".2s ease-in-out";
+			document.getElementById("projectfull").style.transform = "scale(0.0)";
+			document.getElementById("projectfull").style.opacity = "0.0";
+		}
+
+		function full(el) {
+				return;
+
+			document.body.style.overflowY = "hidden";
+			document.getElementById("projectfull").innerHTML = el.innerHTML.replaceAll("</info>",
+			 "</info><div class='br'/>") + `
+				<a class="closebtn" style="z-index:55;" onclick="closeFull()">&#215;</a>
+			`;
+			document.getElementById("projectfull").style.transition = ".3s cubic-bezier(0.2, 0, 0.0, 1.5)";
+			document.getElementById("projectfull").style.transform = "scale(1.0)";
+			document.getElementById("projectfull").style.opacity = "1.0";
+			fullElement = el;
+		}
+
+		function sendMsg(msg) {
+			let e = document.createElement("msg");
+			e.innerText = msg;
+			e.style.transform = "scaleY(0.0)";
+			e.style.opacity = "0.0";
+			document.getElementById("msglist").appendChild(e);
+			lifeEl(e);
+		}
+		
+		function sleep(ms) {
+  			return new Promise(resolve => setTimeout(resolve, ms));
+		}
+
+		async function lifeEl(e) {
+			e.style.opacity = "1.0";
+			e.style.transform = "scaleY(1.0)";
+			await sleep(5000);
+			e.style.transition = ".5s ease-in-out";
+			e.style.opacity = "0.0";
+			e.style.height = "0";
+			e.style.transform = "scaleY(0.0)";
+			await sleep(100);
+			e.animate({width: 0}, 300, function(){
+      			e.remove();
+    		});
+		}
+			// e.parentNode.removeChild(e);
+		// }
+
+	</script>
+
+	<style type="text/css">
+		projectfull {
+			z-index: 50;
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			background: #151515;
+			padding: 10px 20px;
+			transform: scale(0.0);
+		}
+
+		projectfull > img {
+			top: 0;
+			left: 0;
+			position: absolute;
+			width: 100% !important;
+			height: 100% !important;
+			z-index: 51;
+		}
+
+		projectfull > info {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100% !important;
+			height: fit-content;
+			z-index: 52;
+			background: #252525EE;
+			padding-top: 20px;
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+		}
+
+		projectfull > info > a {
+			padding-bottom: 20px;
+		}
+
+		projectfull > info > .br {
+			display: block;
+    		padding-bottom: 5%;
+		}
+
+		.loadingimg {
+			width: 50%;
+    		position: relative;
+    		background: #222;
+    		border-radius: 5px;
+		}
+
+		.loadingcontent {
+    		padding: 0px 20px;
+			width: 100%;
+    		position: relative;
+		}
+
+		.loadingcontent > h1 {
+    		display: block;
+    		background: #222;
+    		border-radius: 50px;
+    		height: 40px;
+		}
+
+		.loadingcontent > h5 {
+    		display: block;
+    		background: #1C1C1C;
+    		border-radius: 25px;
+    		height: 20px;
+		}
+
+		.glare {
+  			position: relative;
+  			overflow: hidden;
+		}
+
+		.glare:after {
+  			content: "";
+  			display: block;
+  			left: 200%;
+  			top: -100%;
+  			width: 30px;
+  			height: 350%;
+  			background: linear-gradient(
+      			to top,
+      			#55555555 0%,
+      			#55555555 50%,
+      			#55555555 100%
+  			);
+  			z-index: 1;
+  			transform: rotate(45deg);
+  			position: absolute;
+ 			animation: blink 2s infinite ease-in-out;
+		}
+
+		@keyframes blink {
+  			from {
+  			  left: -200%;
+  			}
+  			to {
+  			  left: 200%;
+  			}
+		}
+
+		.topbtn {
+			position: fixed;
+			display: block;
+			bottom: 10px;
+			right: 10px;
+			background: #222;
+			width: 40px;
+			height: 40px;
+			border-radius: 5px;
+			z-index: 30;
+    		display: flex;
+    		align-items: center;
+    		justify-content: center;
+			transition: .2s ease-in-out;
+			box-shadow: 0 0 5px 0 #000;
+			border: #444 1.5px solid;
+		}
+
+		arrow.top {
+			display: block;
+			width: 40%;
+			height: 40%;
+      		border-top: 4px solid #EEE;
+      		border-right: 4px solid #EEE;
+      		transform: translateY(20%) scaleX(0.75) rotate(-45deg);
+		}
+
+		.topbtn:hover {
+			background: #252525;
+			box-shadow: 0 0 0 3px #777;
+		}
+		.topbtn:hover > arrow.top{
+      		border-top: 4px solid #FFF;
+      		border-right: 4px solid #FFF;
+		}
+
+	</style>
+</head>
+<body>
+	<div style="display: none;" id="top"></div>
+	<a class="topbtn" href="#top"><arrow class="top"/></a>
+	<header>
+		<inheader class="p1">
+		<mainimage class="gradient roundbr"><img onError="imageErr(this)" alt src="https://avatars.githubusercontent.com/u/75160721?v=4"></mainimage>
+		</inheader>
+		<inheader class="p2">
+		<div class="headerBox">
+			<a href="#home" class="navbutton">Home</a>
+			<a href="#javaprojects" class="navbutton">Projects</a>
+
+			<div class="navel">
+				<div class="navbutton">Sites</div>
+            	<div class="navcontent">
+                	<a href="https://github.com/Agzam4">
+                		<img src="https://github.com/favicon.ico"/>
+                		Github
+                	</a>
+                	<a href="https://www.youtube.com/channel/UC1WDVmqsb2gQZH08G86cP8g">
+                		<img src="https://www.youtube.com/favicon.ico"/>
+            		Youtube
+                	</a>
+                	<a href="https://scratch.mit.edu/users/Agzam4/">
+                		<img src="https://scratch.mit.edu/favicon.ico"/>
+                	Scratch</a>
+            	</div>
+            </div>
+		</div>
+		</inheader>
+	</header>
+
+	<div class="body">
+	<!-- <div class="gradient"><h2>Gradient</h2></div> -->
+		<!-- <msglist id="msglist" class="row">
+		</msglist> -->
+		<projectfull  id="projectfull">
+			
+		</projectfull>
+
+		<videoplayer id="videoplayer">
+			<iframe id="video" width="90%" height="90%" src="https://www.youtube.com/embed/AiOk8Q7qqiY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<a class="closebtn" onclick="closeVideo()">&#215;</a>
+		</videoplayer>
+
+		<div id="home">
+		<h1>Home</h1>
+		<line></line><br>
+		<img class="badge" alt="GitHub followers" src="https://img.shields.io/github/followers/agzam4?color=999&logo=github&style=for-the-badge">
+		<img class="badge" alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UC1WDVmqsb2gQZH08G86cP8g?color=%23999&logo=youtube&style=for-the-badge">
+		<br><br>
+		<img src="https://github-readme-stats.vercel.app/api?username=agzam4&show_icons=true&theme=dark&title_color=00FFB4&text_color=999&icon_color=00FF5D&border_color=EEE">
+
+		<div id="javaprojects">
+		<h1>Projects (Java)</h1>
+		<line></line><br>
+		<div id="projects">
+			<div></div>
+			<div class="loadingbox">
+				<div src="" class="loadingimg glare">
+					<loading></loading>
+				</div>
+				<div class="loadingcontent">
+					<h1 class="glare"></h1>
+					<h5 class="glare"></h5>
+					<h5 class="glare"></h5>
+					<h5 class="glare"></h5>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+	</div>
+</body>
+</html>
