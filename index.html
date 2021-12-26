@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>Agzam4</title>
 	<link type="image/x-icon" rel="shortcut icon" href="/Agzam4_/favicon.ico">
 	<link type="image/ico" sizes="16x16" rel="icon" href="/Agzam4_/favicon-16x16.ico">
 	<link type="image/ico" sizes="32x32" rel="icon" href="/Agzam4_/favicon-32x32.ico">
@@ -325,12 +325,28 @@
 			text-decoration: none;
 		}
 
+		.play {
+			font-family: monospace;
+			display: inline-block;
+			width: fit-content;
+			padding: 5px 20px;
+			color: #EEE;
+			background: #333;
+  			transition: .2s ease-in-out;
+			text-decoration: none;
+		}
+
 		.download:hover {
 			color: #FFF;
 			box-shadow: 0 0 0 3px #555;
 		}
 
 		.gotocode:hover {
+			color: #FFF;
+			box-shadow: 0 0 0 3px #555;
+		}
+
+		.play:hover {
 			color: #FFF;
 			box-shadow: 0 0 0 3px #555;
 		}
@@ -463,7 +479,6 @@
       animation: spin 4s linear infinite;
     }
 
-
 		@keyframes spin{
   		0% {
   			transform: rotate(0deg);
@@ -472,23 +487,110 @@
   			transform: rotate(360deg);
   		}
 		}
+
+		.project.new:after {
+			position: absolute;
+			content: "NEW";
+			color: #FFF;
+			width: ;
+    		right: 0;
+    		padding: 3px 20px;
+    		transform: translate(-22px, -7px) rotate(15deg);
+    		background: #06c668;
+    		border-radius: 3px;
+		}
+
+		.project.new {
+    	box-shadow: 0px 0px 3px 0px #06c668;
+		}
+
+		.project.new:hover {
+    		box-shadow: 0px 0px 0px 2px #06c668;
+		}
+
+		.project.top:after {
+			position: absolute;
+			content: "TOP";
+			color: #FFF;
+			width: ;
+    		right: 0;
+    		padding: 3px 20px;
+    		transform: translate(-22px, -7px) rotate(15deg);
+    		background: #ff453c;
+    		border-radius: 3px;
+		}
+
+		.project.top {
+    	box-shadow: 0px 0px 3px 1px #ff453c;
+		}
+
+		.project.top:hover {
+    		box-shadow: 0px 0px 0px 2px #ff453c;
+		}
+
+		.project.hit:after {
+			position: absolute;
+			content: "MOST DOWNLOADED";
+			color: #FFF;
+			width: ;
+    		right: 0;
+    		padding: 3px 20px;
+    		transform: translate(-22px, 10px) rotate(15deg);
+    		background: #ffc107;
+    		border-radius: 3px;
+		}
+
+		.project.hit {
+    	box-shadow: 0px 0px 3px 0px #ffc107;
+		}
+
+		.project.hit:hover {
+    		box-shadow: 0px 0px 0px 2px #ffc107;
+		}
 	</style>
 
 	<script type="text/javascript">
 
 		window.onload = function() {
-			let data = "";
 			var request = new XMLHttpRequest();
     		request.open('GET', 'https://raw.githubusercontent.com/Agzam4/Agzam4_/main/data.md', true);
     		request.send(null);
     		request.onreadystatechange = function () {
         		if (request.status === 200) {
-        			console.log(request.responseText);
+					let data = "";
             		data = request.responseText;
             		loadProjects(data);
         		}
         	}
+
+        	
+			var jsrequest = new XMLHttpRequest();
+    		jsrequest.open('GET', 'https://raw.githubusercontent.com/Agzam4/Agzam4_/main/jsprojects.md', true);
+    		jsrequest.send(null);
+    		jsrequest.onreadystatechange = function () {
+        		if (jsrequest.status === 200) {
+            		loadJSProjects(jsrequest.responseText);
+        		}
+        	}
+
+        	const links = document.querySelectorAll('a[href*="#"]');
+
+			for (const link of links) {
+			  link.addEventListener("click", clickHandler);
+			}
+
+			function clickHandler(e) {
+ 		 		e.preventDefault();
+		  		const href = this.getAttribute("href");
+  				const offsetTop = document.querySelector(href).offsetTop;
+
+  				scroll({
+    				top: offsetTop,
+    				behavior: "smooth"
+  				});
+			}
     	}
+
     	let isLoaded = false;
 
     	function loadProjects(data) {
@@ -508,6 +610,7 @@
         			let projectDescription = 	projectData[4].replaceAll("\\n", "\n");
         			let projectDownload = 		projectData[5];
         			let projectYouTube = 		projectData[6];
+        			let projectRating = 		projectData[7];
 
         			let youTubeClick = "";
         			if(projectYouTube != "-") {
@@ -515,7 +618,7 @@
         			}
         			console.log(projectName);
 					let html = `
-					<div class="project" onclick="full(this)">
+					<div class="project ` + projectRating + `" onclick="full(this)">
 					<img class="project " onError="imageErr(this)" src="` + imageUrl + `"/></td>
 					<info>
 					<h1>` + projectName + " " + youTubeClick +
@@ -539,30 +642,87 @@
         		}
         		main.innerHTML = allHtml;
         	}
+        }
 
+    	let isJSPLoaded = false;
 
-const links = document.querySelectorAll('a[href*="#"]');
+		function loadJSProjects(data) {
+			console.log(data);
+    		if(isJSPLoaded) return;
+    		if(data != "") {
+    			isJSPLoaded = true;
+        		let main = document.getElementById('jsprojects');
+        		let projects = data.split("\n\n");
+        		let allHtml = "";
+        		for (var i = 0; i < projects.length; i++) {
+        			let projectData = projects[i].replaceAll("\n", "").split("@");
+        			console.log(projectData);
+	
+        			let projectUrl = 			projectData[1];
+        			let projectName = 			projectData[2];
+        			let imageUrl = 				projectData[3];
+        			let projectDescription = 	projectData[4].replaceAll("\\n", "\n");
+        			let projectDownload = 		projectData[5].replaceAll("\n", "");
+        			let projectYouTube = 		projectData[6];
+        			let projectRating = 		projectData[7];
 
-for (const link of links) {
-  link.addEventListener("click", clickHandler);
-}
+        			let youTubeClick = "";
+        			if(projectYouTube != "-") {
+        				youTubeClick = `<img class="watch" onclick="showVideo('` + projectYouTube + `')" 	src="https://img.shields.io/static/	v1?label=%20&message=%20watch&color=%23F00&logo=youtube&style=for-the-badge">`;
+        			}
+        			console.log(projectName);
+					let html = `
+					<div class="project ` + projectRating + `" onclick="full(this)">
+					<img class="project " onError="imageErr(this)" src="` + imageUrl + `"/></td>
+					<info>
+					<h1>` + projectName + " " + youTubeClick +
+					`</h1>
+					<br> 
+					<img class="badge" alt="GitHub release (GitHub Repo stars)" src="https://img.shields.io/github/stars/	agzam4/` + projectUrl +  `?color=FFE572&style=for-the-badge">
+					<br><br><line></line><br>
+					` + projectDescription + `
+					<br><br><line></line><br>
+					<div class="br">
+					<a class="play" 
+					onclick="playJSGame('` + escape(projectDownload) + `')"
+					>Play</a>
+					<a class="gotocode" href="https://github.com/Agzam4/` + projectUrl +  `">Go to code</a>
+					</div>
+					</info>
+					</div><br><br>
+					`
+        			allHtml += html;
+        		}
+        		main.innerHTML = allHtml;
+        	}
+        }
 
-function clickHandler(e) {
-  e.preventDefault();
-  const href = this.getAttribute("href");
-  const offsetTop = document.querySelector(href).offsetTop;
+        function playJSGame(url) {
+        	url = "https://raw.githubusercontent.com/Agzam4/Neon-effects/main/index.html";
+            console.log(url);
+        	var jsrequest = new XMLHttpRequest();
+    		jsrequest.open('GET', url, true);
+    		jsrequest.send(null);
+    		jsrequest.onreadystatechange = function () {
+        		let htmlCode = jsrequest.responseText;
+            	console.log(htmlCode);
+            	let iframe = document.getElementById("jsgame");
+            	iframe.src = "javascript:void(0);";
+            	iframe.srcdoc = htmlCode;
+				document.getElementById("jsgameplayer").style.transition = ".3s cubic-bezier(0.2, 0, 0.0, 1.5)";
+				document.getElementById("jsgameplayer").style.transform = "scale(1.0)";
+				document.getElementById("jsgameplayer").style.opacity = "1.0";
+        	}
+        }
 
-  scroll({
-    top: offsetTop,
-    behavior: "smooth"
-  });
-}
-
-
-
-    	}
-
-
+        function closeJSGame() {
+			document.body.style.overflowY = "visible";
+			document.getElementById("jsgameplayer").style.transition = ".2s ease-in-out";
+			document.getElementById("jsgameplayer").style.transform = "scale(0.0)";
+			document.getElementById("jsgameplayer").style.opacity = "0.0";
+			document.getElementById("jsgame").innerHTML = "";
+        }
+        
     	function imageErr(img) {
     		console.log(img);
     		img.classList += "loadingimg";
@@ -732,6 +892,10 @@ function clickHandler(e) {
  			animation: blink 2s infinite ease-in-out;
 		}
 
+		iframe {
+			border: none;
+		}
+
 		@keyframes blink {
   			from {
   			  left: -200%;
@@ -789,7 +953,14 @@ function clickHandler(e) {
 		<inheader class="p2">
 		<div class="headerBox">
 			<a href="#home" class="navbutton">Home</a>
-			<a href="#javaprojects" class="navbutton">Projects</a>
+
+			<div class="navel">
+				<div class="navbutton">Projects</div>
+            	<div class="navcontent">
+                <a href="#javaprojects">Java-Projects</a>
+                <a href="#jsprojects">JS-Projects</a>
+            	</div>
+			</div>
 
 			<div class="navel">
 				<div class="navbutton">Sites</div>
@@ -824,6 +995,12 @@ function clickHandler(e) {
 			<a class="closebtn" onclick="closeVideo()">&#215;</a>
 		</videoplayer>
 
+
+		<videoplayer id="jsgameplayer">
+			<iframe id="jsgame"></iframe>
+			<a class="closebtn" onclick="closeJSGame()">&#215;</a>
+		</videoplayer>
+
 		<div id="home">
 		<h1>Home</h1>
 		<line></line><br>
@@ -849,6 +1026,27 @@ function clickHandler(e) {
 				</div>
 			</div>
 		</div>
+		<br>
+		<br>
+		<h1>JS Projects</h1>
+		<line/>
+		<br>
+		<div id="jsprojects">
+			<div></div>
+			<div class="loadingbox">
+				<div src="" class="loadingimg glare">
+					<loading></loading>
+				</div>
+				<div class="loadingcontent">
+					<h1 class="glare"></h1>
+					<h5 class="glare"></h5>
+					<h5 class="glare"></h5>
+					<h5 class="glare"></h5>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
 		<br>
 		<br>
 	</div>
