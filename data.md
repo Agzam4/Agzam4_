@@ -4,6 +4,7 @@
 @Dodge the balls by destroying them with the mouse cursor \n But not everything is so simple, when you destroy the ball, it breaks up into several smaller ones
 @https://github.com/Agzam4/Lights-Balls/releases/download/v1.2.0/LightBalls_1.2.0.jar
 @AiOk8Q7qqiY
+@new
 
 @The-Light-2-Plus-Plus
 @The Light 2 + +
@@ -11,6 +12,7 @@
 @A sandbox game with light mechanics, as well as the ability to build mechanisms
 @https://github.com/Agzam4/The-Light-2-Plus-Plus/releases/download/v1.2.1/TheLight2++_v1.2.1.jar 
 @-
+@hit
 
 @Dungeon-Underground-traps
 @Dungeon (Underground traps)
@@ -18,6 +20,7 @@
 @Platformer with generated levels and lots of traps
 @https://github.com/Agzam4/Dungeon-Underground-traps/releases/download/v2.4.0/Dungeon-Underground-traps.zip
 @X_qAUPZXDU4
+@top
 
 @Tetris
 @Tetris
@@ -25,6 +28,7 @@
 @Tetris with nice neon graphics.\nThe destruction of blocks is especially beautiful
 @https://github.com/Agzam4/Tetris/archive/refs/heads/main.zip
 @1lVPgbEYQMo
+@new
 
 @AdventuresAndRunes
 @Adventures & Runes
@@ -32,6 +36,7 @@
 @Scrolling Platformer Game
 @https://github.com/Agzam4/AdventuresAndRunes/releases/download/2.9.0/Adventures-Runes-v2.9.0.jar
 @aN1XxVRM71Y
+@
 
 @Dark-Cave-Game-
 @Dark Cave
@@ -39,6 +44,7 @@
 @Explore dungeons full of darkness and charming light of gems, in search of treasures
 @https://github.com/Agzam4/Dark-Cave-Game-/archive/refs/heads/main.zip
 @i-fWct0Iaqg
+@
 
 @The-Light-2
 @The Light
@@ -46,3 +52,4 @@
 @Sandbox with dynamic lighting and mechanisms
 @https://github.com/Agzam4/The-Light-2/releases/download/v2.7.6/The-Light-2-main.zip
 @nrAgJqTUx24
+@
