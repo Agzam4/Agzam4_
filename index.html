@@ -711,7 +711,7 @@
 					<br><br><line></line><br>
 					<div class="br">
 					<a class="play" 
-					onclick="playJSGame('` + escape(projectDownload) + `')"
+					onclick="playJSGame('` + /*escape(*/projectDownload.replaceAll("\n","").replaceAll("\r","")/*)*/ + `')"
 					>Play</a>
 					<a class="gotocode" href="https://github.com/Agzam4/` + projectUrl +  `">Go to code</a>
 					</div>
@@ -731,7 +731,6 @@
     		jsrequest.send(null);
     		jsrequest.onreadystatechange = function () {
         		let htmlCode = jsrequest.responseText;
-            	console.log(htmlCode);
             	let iframe = document.getElementById("jsgame");
             	iframe.src = "javascript:void(0);";
             	iframe.srcdoc = htmlCode;
