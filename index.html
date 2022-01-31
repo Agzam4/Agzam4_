@@ -711,7 +711,7 @@
 					<br><br><line></line><br>
 					<div class="br">
 					<a class="play" 
-					onclick="playJSGame('` + /*escape(*/projectDownload.replaceAll("\n","").replaceAll("\r","")/*)*/ + `')"
+					onclick="playJSGame('` + escape(projectDownload.replaceAll("\n","").replaceAll("\r","")) + `')"
 					>Play</a>
 					<a class="gotocode" href="https://github.com/Agzam4/` + projectUrl +  `">Go to code</a>
 					</div>
