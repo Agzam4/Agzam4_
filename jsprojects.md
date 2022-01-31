@@ -9,7 +9,7 @@
 
 @Neon-effects
 @Neon Mouse trail
-@https://repository-images.githubusercontent.com/316924689/3bf5dc00-3246-11eb-9f55-8ca8ebd0b654
+@https://github.com/Agzam4/Neon-effects/blob/main/light-effect.png?raw=true
 @Mouse trail effect
 @https://raw.githubusercontent.com/Agzam4/Neon-effects/main/LightEffect.html
 @-@
