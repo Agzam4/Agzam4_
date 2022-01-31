@@ -573,6 +573,15 @@
         		}
         	}
 
+			var newsRequest = new XMLHttpRequest();
+    		newsRequest.open('GET', 'https://raw.githubusercontent.com/Agzam4/Agzam4_/main/news.md', true);
+    		newsRequest.send(null);
+    		newsRequest.onreadystatechange = function () {
+        		if (newsRequest.status === 200) {
+            		loadNews(newsRequest.responseText);
+        		}
+        	}
+
         	const links = document.querySelectorAll('a[href*="#"]');
 
 			for (const link of links) {
@@ -589,6 +598,24 @@
     				behavior: "smooth"
   				});
 			}
+    	}
+
+
+    	let isNewsLoaded = false;
+
+    	function loadNews(data) {
+    		if(isNewsLoaded) return;
+    			console.log(data);
+    		if(data != "" && data.replaceAll("\n", "") != "no") {
+        		let main = document.getElementById('news');
+    			isLoaded = true;
+        		main.innerHTML = `
+        			<news>
+        				<h3>News</h3>
+        				` + data.replaceAll("\n", "<br>") + `
+					</news>
+        		`;
+    		}
     	}
 
     	let isLoaded = false;
@@ -652,7 +679,7 @@
     		if(data != "") {
     			isJSPLoaded = true;
         		let main = document.getElementById('jsprojects');
-        		let projects = data.split("\n\n");
+        		let projects = data.split("###");
         		let allHtml = "";
         		for (var i = 0; i < projects.length; i++) {
         			let projectData = projects[i].replaceAll("\n", "").split("@");
@@ -941,6 +968,36 @@
       		border-right: 4px solid #FFF;
 		}
 
+		news {
+			display: block;
+			width: 100%;
+			background: #3AFC6A32;
+			border: 1px #00FF5064 solid;
+			padding: 20px 16px;
+			border-radius: 6px;
+		}
+
+		news > h3 {
+			margin-top: 0;
+		}
+
+		/*.bodybg {
+    background-color: #000;
+    background-image: url(https://github.com/Agzam4/Agzam4_/blob/main/background.png?raw=true);
+    height: 20vw;
+    background-size: 100%;
+    margin-bottom: 20px;
+    background-repeat: no-repeat;
+    position: inherit;
+    background-attachment: fixed;
+    background-position-y: 40px;
+		}*/
+
+		body {
+
+    margin: 0;
+		}
+
 	</style>
 </head>
 <body>
@@ -982,13 +1039,9 @@
 		</inheader>
 	</header>
 
+	<div>
 	<div class="body">
-	<!-- <div class="gradient"><h2>Gradient</h2></div> -->
-		<!-- <msglist id="msglist" class="row">
-		</msglist> -->
-		<projectfull  id="projectfull">
-			
-		</projectfull>
+		<projectfull  id="projectfull"></projectfull>
 
 		<videoplayer id="videoplayer">
 			<iframe id="video" width="90%" height="90%" src="https://www.youtube.com/embed/AiOk8Q7qqiY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -1001,35 +1054,38 @@
 			<a class="closebtn" onclick="closeJSGame()">&#215;</a>
 		</videoplayer>
 
-		<div id="home">
+		<div id="home"></div>
+		<div id="news"></div>
 		<h1>Home</h1>
-		<line></line><br>
+		<line></line>
+		<br>
 		<img class="badge" alt="GitHub followers" src="https://img.shields.io/github/followers/agzam4?color=999&logo=github&style=for-the-badge">
 		<img class="badge" alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UC1WDVmqsb2gQZH08G86cP8g?color=%23999&logo=youtube&style=for-the-badge">
 		<br><br>
 		<img src="https://github-readme-stats.vercel.app/api?username=agzam4&show_icons=true&theme=dark&title_color=00FFB4&text_color=999&icon_color=00FF5D&border_color=EEE">
-
 		<div id="javaprojects">
-		<h1>Projects (Java)</h1>
-		<line></line><br>
-		<div id="projects">
-			<div></div>
-			<div class="loadingbox">
-				<div src="" class="loadingimg glare">
-					<loading></loading>
-				</div>
-				<div class="loadingcontent">
-					<h1 class="glare"></h1>
-					<h5 class="glare"></h5>
-					<h5 class="glare"></h5>
-					<h5 class="glare"></h5>
+			<h1>Projects (Java)</h1>
+			<line></line><br>
+			<div id="projects">
+				<div></div>
+				<div class="loadingbox">
+					<div src="" class="loadingimg glare">
+						<loading></loading>
+					</div>
+					<div class="loadingcontent">
+						<h1 class="glare"></h1>
+						<h5 class="glare"></h5>
+						<h5 class="glare"></h5>
+						<h5 class="glare"></h5>
+					</div>
 				</div>
 			</div>
 		</div>
+
 		<br>
 		<br>
 		<h1>JS Projects</h1>
-		<line/>
+		<line></line>
 		<br>
 		<div id="jsprojects">
 			<div></div>
@@ -1049,6 +1105,7 @@
 		<br>
 		<br>
 		<br>
+	</div>
 	</div>
 </body>
 </html>
