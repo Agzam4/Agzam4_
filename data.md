@@ -10,7 +10,7 @@
 @Lights Balls
 @https://github.com/Agzam4/Lights-Balls/raw/main/background.png?raw=true
 @Dodge the balls by destroying them with the mouse cursor \n But not everything is so simple, when you destroy the ball, it breaks up into several smaller ones
-@https://github.com/Agzam4/Lights-Balls/releases/download/v1.2.0/LightBalls_1.2.0.jar
+@https://github.com/Agzam4/Lights-Balls/releases/download/v1.4.0/LightBalls_v1-4-0.zip
 @AiOk8Q7qqiY
 @new
 
